@@ -1,0 +1,3 @@
+".\Objects\bled.obj" 
+TO ".\Objects\blinkasm" 
+PRINT(".\Listings\blinkasm.m51")

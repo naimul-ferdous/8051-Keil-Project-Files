@@ -1,0 +1,3 @@
+".\Objects\onechar.obj" 
+TO ".\Objects\onechar" 
+PRINT(".\Listings\onechar.m51")

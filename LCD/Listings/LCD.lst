@@ -1,0 +1,79 @@
+A51 MACRO ASSEMBLER  LCD                                                                  08/02/2018 01:14:55 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\LCD.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE LCD.asm SET(SMALL) DEBUG PRINT(.\Listings\LCD.lst) OBJECT(.\Objects\LCD
+                      .obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 00h
+0000 900037            2             MOV DPTR, #CNTWRD
+                       3             
+0003                   4             NEWCMD:
+0003 7400              5             MOV A, #00h
+0005 93                6             MOVC A, @A+DPTR
+0006 600F              7             JZ DATAOUT
+0008 F590              8             MOV P1, A
+000A C2B0              9             CLR P3.0
+000C C2B1             10             CLR P3.1
+000E D2B2             11             SETB P3.2
+0010 112E             12             ACALL DELAY
+0012 C2B2             13             CLR P3.2
+0014 A3               14             INC DPTR
+0015 80EC             15             SJMP NEWCMD
+                      16             
+0017                  17             DATAOUT:
+0017 90003D           18             MOV DPTR, #MYDAAT
+001A 7400             19             MOV A, #00h
+001C 93               20             MOVC A, @A+DPTR
+001D 600D             21             JZ STOP
+001F D2B0             22             SETB P3.0
+0021 C2B1             23             CLR P3.1
+0023 D2B2             24             SETB P3.2
+0025 112E             25             ACALL DELAY
+0027 C2B2             26             CLR P3.2
+0029 A3               27             INC DPTR
+002A 80EB             28             SJMP DATAOUT
+002C 80FE             29             STOP: SJMP STOP
+                      30             
+002E 7BFA             31             DELAY: MOV R3,#250      ;50 or higher 
+0030 7CFF             32             HERE2: MOV R4,#255      ;R4 = 255
+0032 DCFE             33             HERE: DJNZ R4,HERE      ;stay until R4 becomes 0
+0034 DBFA             34             DJNZ R3,HERE2
+0036 22               35             RET
+                      36             
+0037                  37             CNTWRD:
+0037 380E0106         38             DB 38h, 0Eh, 01h, 06h, 80h, 0
+003B 8000                    
+                      39             
+003D                  40             MYDAAT:
+003D 49554241         41             DB 'IUBAT', 0
+0041 5400                    
+                      42             
+                      43             END
+A51 MACRO ASSEMBLER  LCD                                                                  08/02/2018 01:14:55 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+CNTWRD . . . . . .  C ADDR   0037H   A   
+DATAOUT. . . . . .  C ADDR   0017H   A   
+DELAY. . . . . . .  C ADDR   002EH   A   
+HERE . . . . . . .  C ADDR   0032H   A   
+HERE2. . . . . . .  C ADDR   0030H   A   
+MYDAAT . . . . . .  C ADDR   003DH   A   
+NEWCMD . . . . . .  C ADDR   0003H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+P3 . . . . . . . .  D ADDR   00B0H   A   
+STOP . . . . . . .  C ADDR   002CH   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

@@ -1,0 +1,3 @@
+".\Objects\SMPLKBD.obj" 
+TO ".\Objects\SMPLKBD" 
+PRINT(".\Listings\SMPLKBD.m51")

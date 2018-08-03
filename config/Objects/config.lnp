@@ -1,0 +1,3 @@
+".\Objects\config.obj" 
+TO ".\Objects\config" 
+PRINT(".\Listings\config.m51")

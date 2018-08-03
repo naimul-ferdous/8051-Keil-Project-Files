@@ -1,0 +1,63 @@
+A51 MACRO ASSEMBLER  IUBATSINGLE                                                          07/09/2018 01:15:46 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\IUBATsingle.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE IUBATsingle.asm SET(SMALL) DEBUG PRINT(.\Listings\IUBATsingle.lst) OBJE
+                      CT(.\Objects\IUBATsingle.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 00h
+0000                   2             START:
+0000 7805              3             MOV R0, #05h
+0002 90001E            4             MOV DPTR, #TABLE
+0005 75F000            5             MOV B, #00h
+                       6             
+0008                   7             LOOP:
+0008 E5F0              8             MOV A, B
+000A 93                9             MOVC A, @A+DPTR
+000B F590             10             MOV P1, A
+000D 05F0             11             INC B
+000F 1115             12             ACALL DELAY
+0011 D8F5             13             DJNZ R0, LOOP
+0013 80EB             14             SJMP START
+                      15             
+0015                  16             DELAY:
+0015 7995             17             MOV R1, #95h
+0017                  18             DEL1:
+0017 7A60             19             MOV R2, #60h
+0019                  20             DEL2:
+0019 7B20             21             MOV R3, #20h
+001B                  22             DEL3:
+001B DBFE             23             DJNZ R3, DEL3
+001D 22               24             RET
+                      25             
+001E                  26             TABLE:
+001E F9E383A0         27             DB 0F9h, 0E3h, 83h, 0A0h, 87h
+0022 87                      
+                      28             
+                      29             END
+A51 MACRO ASSEMBLER  IUBATSINGLE                                                          07/09/2018 01:15:46 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+B. . . . . . . . .  D ADDR   00F0H   A   
+DEL1 . . . . . . .  C ADDR   0017H   A   
+DEL2 . . . . . . .  C ADDR   0019H   A   
+DEL3 . . . . . . .  C ADDR   001BH   A   
+DELAY. . . . . . .  C ADDR   0015H   A   
+LOOP . . . . . . .  C ADDR   0008H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+START. . . . . . .  C ADDR   0000H   A   
+TABLE. . . . . . .  C ADDR   001EH   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

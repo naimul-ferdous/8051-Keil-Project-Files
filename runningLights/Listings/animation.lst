@@ -1,0 +1,62 @@
+A51 MACRO ASSEMBLER  ANIMATION                                                            05/24/2018 00:03:33 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\animation.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE animation.asm SET(SMALL) DEBUG PRINT(.\Listings\animation.lst) OBJECT(.
+                      \Objects\animation.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 0000h
+0000                   2             START:
+0000 75907F            3             MOV P1,#07Fh
+0003 1128              4             ACALL DELAY
+0005 7590BF            5             MOV P1,#0BFh
+0008 1128              6             ACALL DELAY
+000A 7590DF            7             MOV P1,#0DFh
+000D 1128              8             ACALL DELAY
+000F 7590EF            9             MOV P1,#0EFh
+0012 1128             10             ACALL DELAY
+0014 7590F7           11             MOV P1,#0F7h
+0017 1128             12             ACALL DELAY
+0019 7590FB           13             MOV P1,#0FBh
+001C 1128             14             ACALL DELAY
+001E 7590FD           15             MOV P1,#0FDh
+0021 1128             16             ACALL DELAY
+0023 7590EF           17             MOV P1,#0EFh
+0026 1128             18             ACALL DELAY
+                      19             
+0028                  20             DELAY:
+0028 7980             21             MOV R1,#80h
+002A                  22             DEL1:
+002A 7A60             23             MOV R2,#60h
+002C                  24             DEL2:
+002C 7B20             25             MOV R3,#20h
+002E                  26             DEL3:
+002E DBFE             27             DJNZ R3,DEL3
+0030 DAFA             28             DJNZ R2,DEL2
+0032 D9F6             29             DJNZ R1,DEL1
+                      30             
+0034 22               31             RET
+                      32             END
+A51 MACRO ASSEMBLER  ANIMATION                                                            05/24/2018 00:03:33 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+DEL1 . . . . . . .  C ADDR   002AH   A   
+DEL2 . . . . . . .  C ADDR   002CH   A   
+DEL3 . . . . . . .  C ADDR   002EH   A   
+DELAY. . . . . . .  C ADDR   0028H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+START. . . . . . .  C ADDR   0000H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

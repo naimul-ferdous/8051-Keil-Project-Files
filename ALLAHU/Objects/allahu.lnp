@@ -1,0 +1,3 @@
+".\Objects\allahu.obj" 
+TO ".\Objects\allahu" 
+PRINT(".\Listings\allahu.m51")

@@ -1,0 +1,62 @@
+A51 MACRO ASSEMBLER  BURGLAR                                                              07/16/2018 22:33:49 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\burglar.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE burglar.asm SET(SMALL) DEBUG PRINT(.\Listings\burglar.lst) OBJECT(.\Obj
+                      ects\burglar.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 00H
+                       2     ;; PREP
+0000 900023            3             MOV DPTR, #DOORCODE
+0003 75B0FF            4             MOV P3, #0FFH           ; port#3 as input
+0006 75907F            5             MOV P1, #01111111B      ; blank the display and no alarm
+0009                   6     READP3:
+0009 E5B0              7             MOV A, P3
+000B D2E6              8             SETB ACC.6              ; P3.6 physically not present
+000D B4FF02            9             CJNE A, #0FFH, DETEKT   ; door open ? 
+0010 80F7             10             SJMP READP3
+0012                  11     DETEKT:         
+0012 F4               12             CPL A                   ; compliment door access code
+0013 7800             13             MOV R0, #00H            ; RO as counter
+0015                  14     ROTATE:
+0015 13               15             RRC A
+0016 4003             16             JC DISPLAY
+0018 08               17             INC R0
+0019 80FA             18             SJMP ROTATE
+001B                  19     DISPLAY:
+001B E8               20             MOV A, R0
+001C 93               21             MOVC A, @A+DPTR
+                      22     
+001D F590             23             MOV P1, A
+001F D297             24             SETB P1.7               ; turn on the alarm
+0021 80FE             25     AGAIN:  SJMP AGAIN
+0023                  26     DOORCODE:
+0023 C0F9A4B0         27             DB 0C0h, 0F9h, 0A4h, 0B0h, 99h, 92h, 00h, 82h
+0027 99920082                
+                      28     END
+A51 MACRO ASSEMBLER  BURGLAR                                                              07/16/2018 22:33:49 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+ACC. . . . . . . .  D ADDR   00E0H   A   
+AGAIN. . . . . . .  C ADDR   0021H   A   
+DETEKT . . . . . .  C ADDR   0012H   A   
+DISPLAY. . . . . .  C ADDR   001BH   A   
+DOORCODE . . . . .  C ADDR   0023H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+P3 . . . . . . . .  D ADDR   00B0H   A   
+READP3 . . . . . .  C ADDR   0009H   A   
+ROTATE . . . . . .  C ADDR   0015H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

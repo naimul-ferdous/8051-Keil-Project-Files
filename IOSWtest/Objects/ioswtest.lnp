@@ -1,0 +1,3 @@
+".\Objects\ioswtest.obj" 
+TO ".\Objects\ioswtest" 
+PRINT(".\Listings\ioswtest.m51")

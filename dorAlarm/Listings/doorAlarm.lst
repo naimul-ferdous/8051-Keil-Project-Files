@@ -1,0 +1,70 @@
+A51 MACRO ASSEMBLER  DOORALARM                                                            07/19/2018 00:51:09 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\doorAlarm.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE doorAlarm.asm SET(SMALL) DEBUG PRINT(.\Listings\doorAlarm.lst) OBJECT(.
+                      \Objects\doorAlarm.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 00h
+                       2             
+0000 900023            3             MOV DPTR, #DOORCODE
+0003 75B0FF            4             MOV P3, #0FFh   ;INPUT
+                       5             ;CLR P1.7               ;STOP RINGING
+0006 75907F            6             MOV P1, #7Fh    ;SEND BLANK TO CA DISPLAY
+                       7             
+0009                   8             AGAIN:
+0009 E5B0              9             MOV A, P3
+000B D2E6             10             SETB ACC.6
+000D B4FF02           11             CJNE A, #0FFh, OUTLOOP
+0010 80F7             12             SJMP AGAIN
+                      13             
+0012                  14             OUTLOOP:
+0012 F4               15             CPL A
+0013 7900             16             MOV R1, #00h            ;COUNTER
+                      17             
+0015                  18             OUTLOOP1:
+0015 13               19             RRC A
+0016 4003             20             JC OUTLOOP2
+0018 09               21             INC R1
+0019 80FA             22             SJMP OUTLOOP1
+                      23             
+001B                  24             OUTLOOP2:
+001B E9               25             MOV A, R1
+001C 93               26             MOVC A, @A+DPTR
+                      27             
+001D                  28             BACK:
+001D F590             29             MOV P1, A
+001F D297             30             SETB P1.7
+0021 80FA             31             SJMP BACK
+                      32             
+0023                  33             DOORCODE:
+0023 C0F9A4B0         34             DB  0C0h, 0F9h, 0A4h, 0B0h, 99h, 92h, 00h, 82h
+0027 99920082                
+                      35     
+                      36     END
+A51 MACRO ASSEMBLER  DOORALARM                                                            07/19/2018 00:51:09 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+ACC. . . . . . . .  D ADDR   00E0H   A   
+AGAIN. . . . . . .  C ADDR   0009H   A   
+BACK . . . . . . .  C ADDR   001DH   A   
+DOORCODE . . . . .  C ADDR   0023H   A   
+OUTLOOP. . . . . .  C ADDR   0012H   A   
+OUTLOOP1 . . . . .  C ADDR   0015H   A   
+OUTLOOP2 . . . . .  C ADDR   001BH   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+P3 . . . . . . . .  D ADDR   00B0H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

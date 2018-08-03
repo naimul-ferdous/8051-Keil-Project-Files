@@ -1,0 +1,125 @@
+A51 MACRO ASSEMBLER  MATRIX                                                               07/26/2018 01:29:38 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\matrix.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE matrix.asm SET(SMALL) DEBUG PRINT(.\Listings\matrix.lst) OBJECT(.\Objec
+                      ts\matrix.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 00h
+0000 7590FF            2             MOV P1, #0FFh
+                       3     
+0003                   4             Starter:        
+0003 75B038            5             MOV P3,#00111000b
+0006 E5B0              6             MOV A, P3
+0008 5438              7             ANL A, #00111000b
+000A B438F6            8             CJNE A, #00111000b, Starter
+                       9             
+000D                  10             KeyCheck:       
+000D 1166             11             CALL Delay
+000F E5B0             12             MOV A, P3
+0011 5438             13             ANL A, #00111000b
+0013 B43802           14             CJNE A, #00111000b, Debonc
+0016 80F5             15             SJMP KeyCheck
+                      16             
+0018                  17             Debonc:         
+0018 1166             18             CALL Delay
+001A E5B0             19             MOV A, P3
+001C 5438             20             ANL A, #00111000b
+001E B43802           21             CJNE A, #00111000b, FindRow
+0021 80EA             22             SJMP KeyCheck
+                      23             
+0023                  24             FindRow:        
+0023 75B0FE           25             MOV P3, #11111110b
+0026 E5B0             26             MOV A, P3
+0028 5438             27             ANL A, #00111000b
+002A B43817           28             CJNE A, #00111000b, Row_0
+002D 75B0FD           29             MOV P3, #11111101b
+0030 E5B0             30             MOV A, P3
+0032 5438             31             ANL A, #00111000b
+0034 B43812           32             CJNE A, #00111000b, Row_1
+0037 75B0FB           33             MOV P3, #11111011b
+003A E5B0             34             MOV A, P3
+003C 5438             35             ANL A, #00111000b
+003E B4380D           36             CJNE A, #00111000b, Row_2
+0041 02000D           37             LJMP KeyCheck
+                      38             
+0044                  39             Row_0: 
+0044 90006F           40             MOV DPTR, #Row_0_Data
+0047 800A             41             SJMP Find_Col
+                      42             
+0049                  43             Row_1: 
+0049 900072           44             MOV DPTR, #Row_1_Data
+004C 8005             45             SJMP Find_Col
+                      46             
+004E                  47             Row_2: 
+004E 900075           48             MOV DPTR, #Row_2_Data
+0051 8000             49             SJMP Find_Col
+                      50             
+0053                  51             Find_Col:       
+0053 7A03             52             MOV R2, #03
+0055 C3               53             CLR C
+                      54             
+0056                  55             Get_col:        
+0056 13               56             RRC A
+0057 DAFD             57             DJNZ R2, Get_col
+A51 MACRO ASSEMBLER  MATRIX                                                               07/26/2018 01:29:38 PAGE     2
+
+                      58             
+0059                  59             Find_Main:      
+0059 13               60             RRC A
+005A 5003             61             JNC Matched
+005C A3               62             INC DPTR
+005D 80FA             63             SJMP Find_Main
+                      64             
+005F                  65             Matched:        
+005F E4               66             CLR A
+0060 93               67             MOVC A, @A+DPTR
+0061 F590             68             MOV P1, A
+0063 020003           69             LJMP Starter
+                      70             
+0066 7D50             71             Delay:  MOV R5, #50h
+0068 7E10             72             Del_1:  MOV R6, #10h
+006A DEFE             73             Del_2:  DJNZ R6, Del_2
+006C DDFA             74             DJNZ R5, Del_1
+006E 22               75             RET
+                      76             
+006F C0F9A4           77             Row_0_Data: db 0C0h, 0F9h, 0A4h
+0072 B09992           78             Row_1_Data: db 0B0h, 99h, 92h
+0075 82F880           79             Row_2_Data: db 82h, 0F8h, 80h
+                      80     END
+A51 MACRO ASSEMBLER  MATRIX                                                               07/26/2018 01:29:38 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+DEBONC . . . . . .  C ADDR   0018H   A   
+DELAY. . . . . . .  C ADDR   0066H   A   
+DEL_1. . . . . . .  C ADDR   0068H   A   
+DEL_2. . . . . . .  C ADDR   006AH   A   
+FINDROW. . . . . .  C ADDR   0023H   A   
+FIND_COL . . . . .  C ADDR   0053H   A   
+FIND_MAIN. . . . .  C ADDR   0059H   A   
+GET_COL. . . . . .  C ADDR   0056H   A   
+KEYCHECK . . . . .  C ADDR   000DH   A   
+MATCHED. . . . . .  C ADDR   005FH   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+P3 . . . . . . . .  D ADDR   00B0H   A   
+ROW_0. . . . . . .  C ADDR   0044H   A   
+ROW_0_DATA . . . .  C ADDR   006FH   A   
+ROW_1. . . . . . .  C ADDR   0049H   A   
+ROW_1_DATA . . . .  C ADDR   0072H   A   
+ROW_2. . . . . . .  C ADDR   004EH   A   
+ROW_2_DATA . . . .  C ADDR   0075H   A   
+STARTER. . . . . .  C ADDR   0003H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

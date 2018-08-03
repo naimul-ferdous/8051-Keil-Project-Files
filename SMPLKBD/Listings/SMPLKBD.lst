@@ -1,0 +1,74 @@
+A51 MACRO ASSEMBLER  SMPLKBD                                                              07/27/2018 12:22:39 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\SMPLKBD.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE SMPLKBD.ASM SET(SMALL) DEBUG PRINT(.\Listings\SMPLKBD.lst) OBJECT(.\Obj
+                      ects\SMPLKBD.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1                     ORG 00H
+0000 900035            2                     MOV DPTR, #CACODE
+0003 75B0FF            3                     MOV P3, #0FFH
+0006 75907F            4                     MOV P1, #7FH
+                       5     
+                       6     ;;all keys are open ?
+0009 E5B0              7     KYCHK:  MOV A, P3
+000B D2E6              8                     SETB ACC.6
+000D B4FFF9            9                     CJNE A, #0FFH, KYCHK
+0010 1130             10                     CALL DBONC      ;20ms
+0012 1130             11                     CALL DBONC
+                      12     ;; read key board
+                      13     
+0014 E5B0             14     KYPUSH: MOV A, P3
+0016 D2E6             15                     SETB ACC.6
+0018 B4FF02           16                     CJNE A, #0FFH, RDKEY 
+001B 80F7             17                     SJMP KYPUSH
+                      18     
+001D 1130             19     RDKEY:  CALL DBONC
+001F 1130             20                     CALL DBONC      
+0021 F4               21                     CPL A
+0022 7800             22                     MOV R0, #00H
+                      23                     
+0024 13               24     DETEKT: RRC A
+0025 4003             25                     JC KYCODE
+0027 08               26                     INC R0
+0028 80FA             27                     SJMP DETEKT
+                      28     
+002A E8               29     KYCODE: MOV A, R0
+002B 93               30                     MOVC A, @A+DPTR
+002C F590             31                     MOV P1, A
+002E 80E4             32                     SJMP KYPUSH 
+                      33     
+0030 7FFF             34     DBONC:  MOV R7, #0FFH
+0032 DFFE             35     WAIT:   DJNZ R7, WAIT
+0034 22               36                     RET
+0035 40792430         37     CACODE: DB 40H, 79H, 24H, 30H, 19H, 12H, 78H, 02H ; 0-7
+0039 19127802                
+                      38                     END
+A51 MACRO ASSEMBLER  SMPLKBD                                                              07/27/2018 12:22:39 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+ACC. . . . . . . .  D ADDR   00E0H   A   
+CACODE . . . . . .  C ADDR   0035H   A   
+DBONC. . . . . . .  C ADDR   0030H   A   
+DETEKT . . . . . .  C ADDR   0024H   A   
+KYCHK. . . . . . .  C ADDR   0009H   A   
+KYCODE . . . . . .  C ADDR   002AH   A   
+KYPUSH . . . . . .  C ADDR   0014H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+P3 . . . . . . . .  D ADDR   00B0H   A   
+RDKEY. . . . . . .  C ADDR   001DH   A   
+WAIT . . . . . . .  C ADDR   0032H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

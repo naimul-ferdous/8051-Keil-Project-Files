@@ -1,0 +1,49 @@
+A51 MACRO ASSEMBLER  TIMERPROG                                                            07/10/2018 00:14:19 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\timerProg.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE timerProg.asm SET(SMALL) DEBUG PRINT(.\Listings\timerProg.lst) OBJECT(.
+                      \Objects\timerProg.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 00h
+                       2             
+0000 758910            3             MOV TMOD, #10h
+                       4             
+0003                   5             REPEAT:
+0003 758B00            6             MOV TL1, #00h
+0006 758DFF            7             MOV TH1, #0FFh
+0009 B295              8             CPL P1.5
+000B D28E              9             SETB TR1
+                      10             
+000D                  11             WAIT:
+000D 308FFD           12             JNB TF1, WAIT
+0010 C28E             13             CLR TR1
+0012 C28F             14             CLR TF1
+0014 80ED             15             SJMP REPEAT
+                      16             
+                      17             END
+A51 MACRO ASSEMBLER  TIMERPROG                                                            07/10/2018 00:14:19 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+P1 . . . . . . . .  D ADDR   0090H   A   
+REPEAT . . . . . .  C ADDR   0003H   A   
+TF1. . . . . . . .  B ADDR   0088H.7 A   
+TH1. . . . . . . .  D ADDR   008DH   A   
+TL1. . . . . . . .  D ADDR   008BH   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR1. . . . . . . .  B ADDR   0088H.6 A   
+WAIT . . . . . . .  C ADDR   000DH   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

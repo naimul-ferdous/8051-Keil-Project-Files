@@ -1,0 +1,55 @@
+A51 MACRO ASSEMBLER  IOSWTEST                                                             07/09/2018 15:53:28 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\ioswtest.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE ioswtest.asm SET(SMALL) DEBUG PRINT(.\Listings\ioswtest.lst) OBJECT(.\O
+                      bjects\ioswtest.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 00h
+                       2             
+0000 C290              3             CLR P1.0
+                       4             
+0002                   5             AGAIN:
+0002 209007            6             JB P1.0, GLOW
+0005 D297              7             SETB P1.7
+0007 120013            8             LCALL DELAY
+000A 80F6              9             SJMP AGAIN
+                      10             
+000C                  11             GLOW:
+000C C297             12             CLR P1.7
+000E 120013           13             LCALL DELAY
+0011 80EF             14             SJMP AGAIN
+                      15             
+0013                  16             DELAY:
+0013 78FA             17             MOV R0, #250
+0015                  18             DEL1:
+0015 79FA             19             MOV R1, #250
+0017                  20             DEL2:
+0017 D9FE             21             DJNZ R1, DEL2
+0019 D8FA             22             DJNZ R0, DEL1
+001B 22               23             RET
+                      24             
+                      25             END
+A51 MACRO ASSEMBLER  IOSWTEST                                                             07/09/2018 15:53:28 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+AGAIN. . . . . . .  C ADDR   0002H   A   
+DEL1 . . . . . . .  C ADDR   0015H   A   
+DEL2 . . . . . . .  C ADDR   0017H   A   
+DELAY. . . . . . .  C ADDR   0013H   A   
+GLOW . . . . . . .  C ADDR   000CH   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

@@ -1,0 +1,3 @@
+".\Objects\illusion.obj" 
+TO ".\Objects\illusion" 
+PRINT(".\Listings\illusion.m51")

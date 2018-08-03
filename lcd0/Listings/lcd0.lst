@@ -1,0 +1,93 @@
+A51 MACRO ASSEMBLER  LCD0                                                                 07/29/2018 22:12:46 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\lcd0.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE lcd0.asm SET(SMALL) DEBUG PRINT(.\Listings\lcd0.lst) OBJECT(.\Objects\l
+                      cd0.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     ; P1.0-P1.7=D0-D7, P3.0=RS, P3.1=R/W, P3.2=E
+0000                   2     ORG 0
+0000 900300            3     MOV DPTR,#MYCOM
+0003                   4     C1: 
+0003 E4                5     CLR A
+0004 93                6     MOVC A,@A+DPTR
+0005 111E              7     ACALL COMNWRT   ;call command subroutine
+0007 1138              8     ACALL DELAY     ;give LCD some time
+0009 A3                9     INC DPTR
+000A 6002             10     JZ SEND_DAT
+000C 80F5             11     SJMP C1
+                      12     
+000E                  13     SEND_DAT:
+000E 900306           14     MOV DPTR,#MYDATA
+0011 E4               15     D1: CLR A
+0012 93               16     MOVC A,@A+DPTR
+0013 112B             17     ACALL DATAWRT   ;call command subroutine
+0015 1138             18     ACALL DELAY     ;give LCD some time
+0017 A3               19     INC DPTR
+0018 6002             20     JZ AGAIN
+001A 80F5             21     SJMP D1
+                      22     
+001C 80FE             23     AGAIN: SJMP AGAIN       ;stay here 
+                      24     
+001E                  25     COMNWRT:                ;send command to LCD
+001E F590             26     MOV P1,A                ;copy reg A to P1
+0020 C2B0             27     CLR P3.0                ;RS=0 for command
+0022 C2B1             28     CLR P3.1                ;R/W=0 for write
+0024 D2B2             29     SETB P3.2               ;E=1 for high pulse
+0026 1138             30     ACALL DELAY     ;give LCD some time
+0028 C2B2             31     CLR P3.2                ;E=0 for H-to-L pulse
+002A 22               32     RET
+                      33     
+002B                  34     DATAWRT:                ;write data to LCD
+002B F590             35     MOV P1,A                ;copy reg A to port 1
+002D D2B0             36     SETB P3.0               ;RS=1 for data
+002F C2B1             37     CLR P3.1                ;R/W=0 for write
+0031 D2B2             38     SETB P3.2               ;E=1 for high pulse
+0033 1138             39     ACALL DELAY     ;give LCD some time
+0035 C2B2             40     CLR P3.2                ;E=0 for H-to-L pulse
+0037 22               41     RET
+                      42     
+0038 7BFA             43     DELAY: MOV R3,#250      ;50 or higher 
+003A 7CFF             44     HERE2: MOV R4,#255      ;R4 = 255
+003C DCFE             45     HERE: DJNZ R4,HERE      ;stay until R4 becomes 0
+003E DBFA             46     DJNZ R3,HERE2
+0040 22               47     RET
+                      48     
+0300                  49     ORG 300H
+0300 380E0106         50     MYCOM: DB 38H,0EH,01,06,84H,0 
+0304 8400                    
+                      51     ; commands and null
+0306 49204C4F         52     MYDATA: DB "I LOVE YOU",0
+030A 56452059                
+030E 4F5500                  
+                      53     END  
+A51 MACRO ASSEMBLER  LCD0                                                                 07/29/2018 22:12:46 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+AGAIN. . . . . . .  C ADDR   001CH   A   
+C1 . . . . . . . .  C ADDR   0003H   A   
+COMNWRT. . . . . .  C ADDR   001EH   A   
+D1 . . . . . . . .  C ADDR   0011H   A   
+DATAWRT. . . . . .  C ADDR   002BH   A   
+DELAY. . . . . . .  C ADDR   0038H   A   
+HERE . . . . . . .  C ADDR   003CH   A   
+HERE2. . . . . . .  C ADDR   003AH   A   
+MYCOM. . . . . . .  C ADDR   0300H   A   
+MYDATA . . . . . .  C ADDR   0306H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+P3 . . . . . . . .  D ADDR   00B0H   A   
+SEND_DAT . . . . .  C ADDR   000EH   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

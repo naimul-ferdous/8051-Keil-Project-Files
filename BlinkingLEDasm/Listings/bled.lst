@@ -1,0 +1,44 @@
+A51 MACRO ASSEMBLER  BLED                                                                 05/15/2018 21:22:47 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\bled.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE bled.asm SET(SMALL) DEBUG PRINT(.\Listings\bled.lst) OBJECT(.\Objects\b
+                      led.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     org 0h
+0000 C290              2     start: clr p1.0
+0002 110A              3     call delay      
+0004 D290              4     setb p1.0
+0006 110A              5     call delay      
+0008 80F6              6     sjmp start      
+000A 7964              7     delay: mov R1,#100
+000C 7A3C              8     lop1: mov R2,#60
+000E 7B14              9     lop2: mov R3,#20
+0010 DBFE             10     lop3: djnz R3,lop3
+0012 DAFA             11           djnz R2,lop2
+0014 D9F6             12           djnz R1,lop1
+0016 22               13     ret
+                      14     end
+A51 MACRO ASSEMBLER  BLED                                                                 05/15/2018 21:22:47 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+DELAY. . . . . . .  C ADDR   000AH   A   
+LOP1 . . . . . . .  C ADDR   000CH   A   
+LOP2 . . . . . . .  C ADDR   000EH   A   
+LOP3 . . . . . . .  C ADDR   0010H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+START. . . . . . .  C ADDR   0000H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

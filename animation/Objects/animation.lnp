@@ -1,0 +1,3 @@
+".\Objects\animation.obj" 
+TO ".\Objects\animation" 
+PRINT(".\Listings\animation.m51")

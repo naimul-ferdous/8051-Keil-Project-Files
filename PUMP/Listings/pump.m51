@@ -1,0 +1,57 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    08/01/2018  20:17:48  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\pump.obj TO .\Objects\pump PRINT (.\Listings\pump.m51)
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\pump.obj (PUMP)
+
+
+LINK MAP OF MODULE:  .\Objects\pump (PUMP)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0018H     ABSOLUTE     
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\pump (PUMP)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        PUMP
+  C:0006H         SYMBOL        CONT
+  B:00B0H.1       SYMBOL        HI
+  B:00B0H.0       SYMBOL        LO
+  D:0090H         SYMBOL        P1
+  D:00B0H         SYMBOL        P3
+  N:000EH         SYMBOL        POFFCA
+  N:00C0H         SYMBOL        PONCA
+  C:0013H         SYMBOL        PUMPOF
+  C:000EH         SYMBOL        PUMPON
+  C:0000H         LINE#         8
+  C:0003H         LINE#         9
+  C:0006H         LINE#         12
+  C:0009H         LINE#         13
+  C:000CH         LINE#         14
+  C:000EH         LINE#         17
+  C:0011H         LINE#         18
+  C:0013H         LINE#         21
+  C:0016H         LINE#         22
+  -------         ENDMOD        PUMP
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0018H BYTE ( 1%) *
+******************************************************************************
+
+Program Size: data=8.0 xdata=0 code=24
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

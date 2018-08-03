@@ -1,0 +1,51 @@
+A51 MACRO ASSEMBLER  ILLUSION                                                             07/08/2018 23:32:35 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\illusion.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE illusion.asm SET(SMALL) DEBUG PRINT(.\Listings\illusion.lst) OBJECT(.\O
+                      bjects\illusion.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 00h
+0000                   2             BACK:
+0000 7455              3             MOV A, #55h
+0002 F590              4             MOV P1, A
+0004 110E              5             ACALL DELAY
+0006 74AA              6             MOV A, #0AAh
+0008 F590              7             MOV P1, A
+000A 110E              8             ACALL DELAY
+000C 80F2              9             SJMP BACK
+                      10             
+000E                  11             delay: 
+000E 7D32             12             mov r5, #50
+0010 7E32             13     del1:   mov r6, #50
+0012 7F32             14     del2:   mov r7, #50
+0014 DFFE             15     del3:   djnz r7, del3
+0016 DEFA             16             djnz r6, del2
+0018 DDF6             17             djnz r5, del1
+001A 22               18     ret
+                      19     END
+                                             
+                                     
+A51 MACRO ASSEMBLER  ILLUSION                                                             07/08/2018 23:32:35 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+BACK . . . . . . .  C ADDR   0000H   A   
+DEL1 . . . . . . .  C ADDR   0010H   A   
+DEL2 . . . . . . .  C ADDR   0012H   A   
+DEL3 . . . . . . .  C ADDR   0014H   A   
+DELAY. . . . . . .  C ADDR   000EH   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

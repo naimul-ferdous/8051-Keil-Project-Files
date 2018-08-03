@@ -1,0 +1,3 @@
+".\Objects\cf.obj" 
+TO ".\Objects\cf" 
+PRINT(".\Listings\cf.m51")

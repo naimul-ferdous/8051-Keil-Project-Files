@@ -1,0 +1,53 @@
+A51 MACRO ASSEMBLER  BLINK1_2                                                             05/23/2018 23:28:40 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\blink1.2.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE blink1.2.asm SET(SMALL) DEBUG PRINT(.\Listings\blink1.2.lst) OBJECT(.\O
+                      bjects\blink1.2.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 0000H
+0000                   2             START:
+0000 D292              3             SETB P1.2
+0002 110A              4             ACALL DELAY
+0004 C292              5             CLR P1.2
+0006 110A              6             ACALL DELAY
+0008 80F6              7             SJMP START
+                       8             
+000A                   9             DELAY:
+000A 7940             10             MOV R1,#40h
+000C                  11             DEL1:
+000C 7A40             12             MOV R2,#40h
+000E                  13             DEL2:
+000E 7B20             14             MOV R3,#20h
+0010                  15             DEL3:
+0010 DBFE             16             DJNZ R3,DEL3
+0012 DAFA             17             DJNZ R2,DEL2
+0014 D9F6             18             DJNZ R1,DEL1
+                      19             
+0016 22               20             RET
+                      21             END
+                                             
+                                     
+A51 MACRO ASSEMBLER  BLINK1_2                                                             05/23/2018 23:28:40 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+DEL1 . . . . . . .  C ADDR   000CH   A   
+DEL2 . . . . . . .  C ADDR   000EH   A   
+DEL3 . . . . . . .  C ADDR   0010H   A   
+DELAY. . . . . . .  C ADDR   000AH   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+START. . . . . . .  C ADDR   0000H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

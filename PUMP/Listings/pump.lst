@@ -1,0 +1,57 @@
+A51 MACRO ASSEMBLER  PUMP                                                                 08/01/2018 20:17:48 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\pump.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE pump.asm SET(SMALL) DEBUG PRINT(.\Listings\pump.lst) OBJECT(.\Objects\p
+                      ump.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 00h
+  00B0                 2             LO BIT P3.0
+  00B1                 3             HI BIT P3.1
+                       4             
+  00C0                 5             PONCA EQU 0C0h
+  000E                 6             POFFCA EQU 0Eh
+                       7                     
+0000 75B0FF            8             MOV P3, #0FFh
+0003 7590C0            9             MOV P1, #PONCA
+                      10             
+0006                  11             CONT:
+0006 30B005           12             JNB LO, PUMPON
+0009 20B107           13             JB HI, PUMPOF
+000C 80F8             14             SJMP CONT
+                      15             
+000E                  16             PUMPON:
+000E 7590C0           17             MOV P1, #PONCA
+0011 80F3             18             SJMP CONT
+                      19             
+0013                  20             PUMPOF:
+0013 75900E           21             MOV P1, #POFFCA
+0016 80EE             22             SJMP CONT
+                      23             
+                      24     END
+A51 MACRO ASSEMBLER  PUMP                                                                 08/01/2018 20:17:48 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+CONT . . . . . . .  C ADDR   0006H   A   
+HI . . . . . . . .  B ADDR   00B0H.1 A   
+LO . . . . . . . .  B ADDR   00B0H.0 A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+P3 . . . . . . . .  D ADDR   00B0H   A   
+POFFCA . . . . . .  N NUMB   000EH   A   
+PONCA. . . . . . .  N NUMB   00C0H   A   
+PUMPOF . . . . . .  C ADDR   0013H   A   
+PUMPON . . . . . .  C ADDR   000EH   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

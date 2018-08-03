@@ -1,0 +1,54 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    07/09/2018  16:16:22  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\cf.obj TO .\Objects\cf PRINT (.\Listings\cf.m51)
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\cf.obj (CF)
+
+
+LINK MAP OF MODULE:  .\Objects\cf (CF)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0014H     ABSOLUTE     
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\cf (CF)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        CF
+  C:0002H         SYMBOL        AGAIN
+  C:000DH         SYMBOL        DEL1
+  C:000FH         SYMBOL        DEL2
+  C:000BH         SYMBOL        DELAY
+  D:0090H         SYMBOL        P1
+  C:0000H         LINE#         3
+  C:0002H         LINE#         5
+  C:0004H         LINE#         6
+  C:0006H         LINE#         7
+  C:0009H         LINE#         8
+  C:000BH         LINE#         12
+  C:000DH         LINE#         14
+  C:000FH         LINE#         16
+  C:0011H         LINE#         17
+  C:0013H         LINE#         18
+  -------         ENDMOD        CF
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0014H BYTE ( 0%) *
+******************************************************************************
+
+Program Size: data=8.0 xdata=0 code=20
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

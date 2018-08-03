@@ -1,0 +1,115 @@
+A51 MACRO ASSEMBLER  SCROLLING                                                            07/04/2018 00:14:56 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\scrolling.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE scrolling.asm SET(SMALL) DEBUG PRINT(.\Listings\scrolling.lst) OBJECT(.
+                      \Objects\scrolling.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 00H
+                       2     ;; PREP
+0000 90005A            3             MOV DPTR, #CACODE
+0003 7931              4             MOV R1, #31H            ; buffer
+0005 7B00              5             MOV R3, #00H            ; index
+0007 7A05              6             MOV R2, #05H            ; counter
+                       7     
+0009                   8     GETBUFER:
+0009 EB                9             MOV A, R3
+000A 93               10             MOVC A, @A+DPTR
+000B 0B               11             INC R3
+000C B42404           12             CJNE A, #'$', OVER
+000F 74FF             13             MOV A, #0FFH            ; ca code of blank
+0011 7B00             14             MOV R3, #00                     ; index at 00 offset
+0013                  15     OVER:
+0013 F7               16             MOV @R1, A
+0014 09               17             INC R1
+0015 DAF2             18             DJNZ R2, GETBUFER
+                      19     
+0017                  20     AGAIN:
+0017 7A05             21             MOV R2, #05H            ; counter
+0019 7931             22             MOV R1, #31H            ; adjust buffer(30-34h)
+001B 7830             23             MOV R0, #30H
+001D                  24     ADJUST:
+001D E7               25             MOV A, @R1
+001E F6               26             MOV @R0, A
+001F 08               27             INC R0
+0020 09               28             INC R1  
+0021 DAFA             29             DJNZ R2,ADJUST
+                      30     
+0023 7E10             31             MOV R6, #16             ; outmost loop
+0025                  32     OUTLOOP1:
+0025 7F20             33             MOV R7, #32             ; outer loop
+0027                  34     OUTLOOP2:
+0027 75F001           35             MOV B, #01H                     ; display control code
+002A 7930             36             MOV R1, #30H            ; buffer
+002C 7A05             37             MOV R2, #05H            ; counter
+                      38     
+002E                  39     DISP:                                   ; inner loop
+002E E7               40             MOV A, @R1
+002F F590             41             MOV P1, A
+0031 85F0B0           42             MOV P3, B
+0034 120055           43             LCALL DELY      
+0037 120055           44             LCALL DELY
+003A 09               45             INC R1
+003B E5F0             46             MOV A, B
+003D 23               47             RL A
+003E F5F0             48             MOV B, A
+0040 DAEC             49             DJNZ R2, DISP
+0042 DFE3             50             DJNZ R7, OUTLOOP2
+0044 DEDF             51             DJNZ R6, OUTLOOP1
+                      52     
+0046 7935             53             MOV R1, #35H            ; append buffer
+                      54     
+0048 EB               55             MOV A, R3
+0049 93               56             MOVC A, @A+DPTR
+004A B42404           57             CJNE A, #'$', OVER1
+A51 MACRO ASSEMBLER  SCROLLING                                                            07/04/2018 00:14:56 PAGE     2
+
+004D 74FF             58             MOV A, #0FFH            ; ca code of blank
+004F 7BFF             59             MOV R3, #0FFh           ; index at 00 offset
+0051                  60     OVER1:
+0051 F7               61             MOV @R1, A
+0052 0B               62             INC R3
+                      63     
+0053 80C2             64             SJMP AGAIN
+                      65     
+0055                  66     DELY:
+0055 7DFF             67              MOV R5, #0FFh
+0057 DDFE             68     FIV: DJNZ R5, FIV
+0059 22               69              RET
+                      70     
+005A                  71     CACODE:
+005A F892C0BF         72              DB 0F8h, 92h, 0C0h, 0BFh, 0A4h, 92h, 0C0h, 0B7h,  92h, 0C0h, 0C0h, '$'
+005E A492C0B7                
+0062 92C0C024                
+                      73     END
+A51 MACRO ASSEMBLER  SCROLLING                                                            07/04/2018 00:14:56 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+ADJUST . . . . . .  C ADDR   001DH   A   
+AGAIN. . . . . . .  C ADDR   0017H   A   
+B. . . . . . . . .  D ADDR   00F0H   A   
+CACODE . . . . . .  C ADDR   005AH   A   
+DELY . . . . . . .  C ADDR   0055H   A   
+DISP . . . . . . .  C ADDR   002EH   A   
+FIV. . . . . . . .  C ADDR   0057H   A   
+GETBUFER . . . . .  C ADDR   0009H   A   
+OUTLOOP1 . . . . .  C ADDR   0025H   A   
+OUTLOOP2 . . . . .  C ADDR   0027H   A   
+OVER . . . . . . .  C ADDR   0013H   A   
+OVER1. . . . . . .  C ADDR   0051H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+P3 . . . . . . . .  D ADDR   00B0H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

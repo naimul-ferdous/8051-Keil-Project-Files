@@ -1,0 +1,53 @@
+A51 MACRO ASSEMBLER  RUNNINGLEDS                                                          07/09/2018 14:19:14 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\runningLEDs.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE runningLEDs.asm SET(SMALL) DEBUG PRINT(.\Listings\runningLEDs.lst) OBJE
+                      CT(.\Objects\runningLEDs.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 00h
+0000 74FE              2             MOV A, #0FEh
+0002 F590              3             MOV P1, A
+                       4             
+0004                   5             START:
+0004 23                6             RL A
+0005 F590              7             MOV P1, A
+0007 110B              8             ACALL DELAY
+0009 80F9              9             SJMP START
+                      10             
+000B                  11             DELAY:
+000B 793C             12             MOV R1, #60
+000D                  13             DEL1:
+000D 7A1E             14             MOV R2, #30
+000F                  15             DEL2:
+000F 7B0F             16             MOV R3, #15
+0011                  17             DEL3:
+0011 DBFE             18             DJNZ R3, DEL3
+0013 DAFA             19             DJNZ R2, DEL2
+0015 D9F6             20             DJNZ R1, DEL1
+0017 22               21             RET
+                      22             
+                      23             END
+A51 MACRO ASSEMBLER  RUNNINGLEDS                                                          07/09/2018 14:19:14 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+DEL1 . . . . . . .  C ADDR   000DH   A   
+DEL2 . . . . . . .  C ADDR   000FH   A   
+DEL3 . . . . . . .  C ADDR   0011H   A   
+DELAY. . . . . . .  C ADDR   000BH   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+START. . . . . . .  C ADDR   0004H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

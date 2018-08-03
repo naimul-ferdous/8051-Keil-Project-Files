@@ -1,0 +1,76 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    07/09/2018  01:33:41  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\twoanode.obj TO .\Objects\doubleanode PRINT (.\Listings\doubleanode.m51)
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\twoanode.obj (TWOANODE)
+
+
+LINK MAP OF MODULE:  .\Objects\doubleanode (TWOANODE)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0033H     ABSOLUTE     
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\doubleanode (TWOANODE)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        TWOANODE
+  D:00F0H         SYMBOL        B
+  C:002EH         SYMBOL        CODEDATA
+  C:0023H         SYMBOL        DEL1
+  C:0025H         SYMBOL        DEL2
+  C:0027H         SYMBOL        DEL3
+  C:0021H         SYMBOL        DELAY
+  D:0090H         SYMBOL        P1
+  D:00B0H         SYMBOL        P3
+  C:0000H         SYMBOL        RELOAD
+  C:000EH         SYMBOL        REPEAT
+  C:0000H         LINE#         4
+  C:0002H         LINE#         5
+  C:0004H         LINE#         6
+  C:0007H         LINE#         7
+  C:0009H         LINE#         8
+  C:000CH         LINE#         9
+  C:000EH         LINE#         12
+  C:000FH         LINE#         13
+  C:0010H         LINE#         14
+  C:0012H         LINE#         15
+  C:0013H         LINE#         16
+  C:0016H         LINE#         17
+  C:0018H         LINE#         18
+  C:0019H         LINE#         19
+  C:001BH         LINE#         20
+  C:001DH         LINE#         21
+  C:001FH         LINE#         22
+  C:0021H         LINE#         25
+  C:0023H         LINE#         26
+  C:0025H         LINE#         27
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  07/09/2018  01:33:41  PAGE 2
+
+
+  C:0027H         LINE#         28
+  C:0029H         LINE#         29
+  C:002BH         LINE#         30
+  C:002DH         LINE#         31
+  -------         ENDMOD        TWOANODE
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0033H BYTE ( 2%) *
+******************************************************************************
+
+Program Size: data=8.0 xdata=0 code=51
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

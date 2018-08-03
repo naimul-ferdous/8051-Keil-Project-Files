@@ -1,0 +1,64 @@
+A51 MACRO ASSEMBLER  123                                                                  06/22/2018 18:31:50 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\123.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE 123.asm SET(SMALL) DEBUG PRINT(.\Listings\123.lst) OBJECT(.\Objects\123
+                      .obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 00h
+0000                   2             START:
+0000 780B              3             MOV R0, #11
+0002 90001E            4             MOV DPTR, #TABLE
+                       5             
+0005                   6             LOOP:
+0005 7400              7             MOV A, #00h
+0007 93                8             MOVC A, @A+DPTR
+0008 F590              9             MOV P1, A
+000A A3               10             INC DPTR
+000B 1111             11             ACALL DELAY
+000D D8F6             12             DJNZ R0, LOOP
+000F 80EF             13             SJMP START
+                      14             
+0011                  15             DELAY:
+0011 7995             16             MOV R1, #95h
+0013                  17             DEL1:
+0013 7A60             18             MOV R2, #60h
+0015                  19             DEL2:
+0015 7B20             20             MOV R3, #20h
+0017                  21             DEL3:
+0017 DBFE             22             DJNZ R3, DEL3
+0019 DAFA             23             DJNZ R2, DEL2
+001B D9F6             24             DJNZ R1, DEL1
+001D 22               25             RET
+                      26             
+001E                  27             TABLE:
+001E C0F9A4B0         28             DB 0C0h, 0F9h, 0A4h, 0B0h, 99h, 92h, 82h, 0F8h, 80h, 90h, 7Fh
+0022 999282F8                
+0026 80907F                  
+                      29             
+                      30             END
+A51 MACRO ASSEMBLER  123                                                                  06/22/2018 18:31:50 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+DEL1 . . . . . . .  C ADDR   0013H   A   
+DEL2 . . . . . . .  C ADDR   0015H   A   
+DEL3 . . . . . . .  C ADDR   0017H   A   
+DELAY. . . . . . .  C ADDR   0011H   A   
+LOOP . . . . . . .  C ADDR   0005H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+START. . . . . . .  C ADDR   0000H   A   
+TABLE. . . . . . .  C ADDR   001EH   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

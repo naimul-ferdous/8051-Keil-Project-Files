@@ -1,0 +1,49 @@
+A51 MACRO ASSEMBLER  CONFIG                                                               07/09/2018 15:27:10 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\config.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE config.asm SET(SMALL) DEBUG PRINT(.\Listings\config.lst) OBJECT(.\Objec
+                      ts\config.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 00h
+                       2             
+0000                   3             AGAIN:
+0000 D290              4             SETB P1.0
+0002 110A              5             ACALL DELAY
+0004 C290              6             CLR P1.0
+0006 110A              7             ACALL DELAY
+0008 80F6              8             SJMP AGAIN
+                       9             
+000A                  10             DELAY:
+000A 78FA             11             MOV R0, #250
+000C                  12             DEL1:
+000C 79FA             13             MOV R1, #250
+000E                  14             DEL2:
+000E D9FE             15             DJNZ R1, DEL2
+0010 D8FA             16             DJNZ R0, DEL1
+0012 22               17             RET
+                      18             
+                      19             END
+                                     
+A51 MACRO ASSEMBLER  CONFIG                                                               07/09/2018 15:27:10 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+AGAIN. . . . . . .  C ADDR   0000H   A   
+DEL1 . . . . . . .  C ADDR   000CH   A   
+DEL2 . . . . . . .  C ADDR   000EH   A   
+DELAY. . . . . . .  C ADDR   000AH   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

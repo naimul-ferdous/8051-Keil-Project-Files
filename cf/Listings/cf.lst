@@ -1,0 +1,49 @@
+A51 MACRO ASSEMBLER  CF                                                                   07/09/2018 16:16:21 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\cf.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE cf.asm SET(SMALL) DEBUG PRINT(.\Listings\cf.lst) OBJECT(.\Objects\cf.ob
+                      j) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 00h
+                       2             
+0000 D290              3             SETB P1.0
+0002                   4             AGAIN:
+0002 A290              5             MOV C, P1.0
+0004 9297              6             MOV P1.7, C
+0006 12000B            7             LCALL DELAY
+0009 80F7              8             SJMP AGAIN
+                       9     
+                      10     
+000B                  11             DELAY:
+000B 78FA             12             MOV R0, #250
+000D                  13             DEL1:
+000D 79FA             14             MOV R1, #250
+000F                  15             DEL2:
+000F D9FE             16             DJNZ R1, DEL2
+0011 D8FA             17             DJNZ R0, DEL1
+0013 22               18             RET
+                      19             
+                      20             END
+A51 MACRO ASSEMBLER  CF                                                                   07/09/2018 16:16:21 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+AGAIN. . . . . . .  C ADDR   0002H   A   
+DEL1 . . . . . . .  C ADDR   000DH   A   
+DEL2 . . . . . . .  C ADDR   000FH   A   
+DELAY. . . . . . .  C ADDR   000BH   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

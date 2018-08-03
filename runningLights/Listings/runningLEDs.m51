@@ -1,0 +1,71 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    05/24/2018  00:04:16  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\animation.obj TO .\Objects\runningLEDs PRINT (.\Listings\runningLEDs.m51)
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\animation.obj (ANIMATION)
+
+
+LINK MAP OF MODULE:  .\Objects\runningLEDs (ANIMATION)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0035H     ABSOLUTE     
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\runningLEDs (ANIMATION)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        ANIMATION
+  C:002AH         SYMBOL        DEL1
+  C:002CH         SYMBOL        DEL2
+  C:002EH         SYMBOL        DEL3
+  C:0028H         SYMBOL        DELAY
+  D:0090H         SYMBOL        P1
+  C:0000H         SYMBOL        START
+  C:0000H         LINE#         3
+  C:0003H         LINE#         4
+  C:0005H         LINE#         5
+  C:0008H         LINE#         6
+  C:000AH         LINE#         7
+  C:000DH         LINE#         8
+  C:000FH         LINE#         9
+  C:0012H         LINE#         10
+  C:0014H         LINE#         11
+  C:0017H         LINE#         12
+  C:0019H         LINE#         13
+  C:001CH         LINE#         14
+  C:001EH         LINE#         15
+  C:0021H         LINE#         16
+  C:0023H         LINE#         17
+  C:0026H         LINE#         18
+  C:0028H         LINE#         21
+  C:002AH         LINE#         23
+  C:002CH         LINE#         25
+  C:002EH         LINE#         27
+  C:0030H         LINE#         28
+  C:0032H         LINE#         29
+  C:0034H         LINE#         31
+  -------         ENDMOD        ANIMATION
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  05/24/2018  00:04:16  PAGE 2
+
+
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0035H BYTE ( 2%) *
+******************************************************************************
+
+Program Size: data=8.0 xdata=0 code=53
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

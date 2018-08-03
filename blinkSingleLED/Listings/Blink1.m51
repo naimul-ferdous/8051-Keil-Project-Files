@@ -1,0 +1,57 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    05/23/2018  23:30:09  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\blink1.2.obj TO .\Objects\Blink1.2 PRINT (.\Listings\Blink1.m51)
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\blink1.2.obj (BLINK1_2)
+
+
+LINK MAP OF MODULE:  .\Objects\Blink1.2 (BLINK1_2)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0017H     ABSOLUTE     
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\Blink1.2 (BLINK1_2)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        BLINK1_2
+  C:000CH         SYMBOL        DEL1
+  C:000EH         SYMBOL        DEL2
+  C:0010H         SYMBOL        DEL3
+  C:000AH         SYMBOL        DELAY
+  D:0090H         SYMBOL        P1
+  C:0000H         SYMBOL        START
+  C:0000H         LINE#         3
+  C:0002H         LINE#         4
+  C:0004H         LINE#         5
+  C:0006H         LINE#         6
+  C:0008H         LINE#         7
+  C:000AH         LINE#         10
+  C:000CH         LINE#         12
+  C:000EH         LINE#         14
+  C:0010H         LINE#         16
+  C:0012H         LINE#         17
+  C:0014H         LINE#         18
+  C:0016H         LINE#         20
+  -------         ENDMOD        BLINK1_2
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0017H BYTE ( 1%) *
+******************************************************************************
+
+Program Size: data=8.0 xdata=0 code=23
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

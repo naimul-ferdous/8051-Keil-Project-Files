@@ -1,0 +1,3 @@
+".\Objects\timerProg.obj" 
+TO ".\Objects\timerProg" 
+PRINT(".\Listings\timerProg.m51")

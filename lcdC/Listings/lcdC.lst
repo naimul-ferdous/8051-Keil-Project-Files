@@ -1,0 +1,65 @@
+C51 COMPILER V9.59.0.0   LCDC                                                              07/23/2018 11:39:13 PAGE 1   
+
+
+C51 COMPILER V9.59.0.0, COMPILATION OF MODULE LCDC
+OBJECT MODULE PLACED IN .\Objects\lcdC.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE lcdC.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\lcdC
+                    -.lst) TABS(2) OBJECT(.\Objects\lcdC.obj)
+
+line level    source
+
+   1          #include <reg51.h>
+   2          sfr ldata = 0x90; //P1=LCD data pins
+   3          sbit rs = P2^0;
+   4          sbit rw = P2^1;
+   5          sbit en = P2^2;
+   6          sbit busy = P1^7;
+   7          void main(){
+   8   1      lcdcmd(0x38);
+*** WARNING C206 IN LINE 8 OF lcdC.c: 'lcdcmd': missing function-prototype
+*** ERROR C267 IN LINE 8 OF lcdC.c: 'lcdcmd': requires ANSI-style prototype
+   9   1      lcdcmd(0x0E);
+  10   1      lcdcmd(0x01);
+  11   1      lcdcmd(0x06);
+  12   1      lcdcmd(0x86); //line 1, position 6
+  13   1      lcdcmd('M');
+  14   1      lcdcmd('D');
+  15   1      lcdcmd('E');
+  16   1      }
+  17          void lcdcmd(unsigned char value){
+*** ERROR C231 IN LINE 17 OF lcdC.c: 'lcdcmd': redefinition
+  18   1      lcdready(); //check the LCD busy flag
+  19   1      ldata = value; //put the value on the pins
+  20   1      rs = 0;
+  21   1      rw = 0;
+  22   1      en = 1; //strobe the enable pin
+  23   1      MSDelay(1);
+  24   1      en = 0;
+  25   1      return;
+  26   1        }
+  27          void lcddata(unsigned char value){
+  28   1      lcdready(); //check the LCD busy flag
+  29   1      ldata = value; //put the value on the pins
+  30   1      rs = 1;
+  31   1      rw = 0;
+  32   1      en = 1; //strobe the enable pin
+  33   1      MSDelay(1);
+  34   1      en = 0;
+  35   1      return;
+  36   1      }
+  37          void lcdready(){
+  38   1      busy = 1; //make the busy pin at input
+  39   1      rs = 0;
+  40   1      rw = 1;
+  41   1      while(busy==1){ //wait here for busy flag
+  42   2      en = 0; //strobe the enable pin
+  43   2      MSDelay(1);
+  44   2      en = 1;
+  45   2      }
+  46   1      void lcddata(unsigned int itime){
+  47   1      unsigned int i, j;
+  48   1      for(i=0;i<itime;i++)
+  49   1      for(j=0;j<1275;j++);
+  50   1      }
+
+C51 COMPILATION COMPLETE.  1 WARNING(S),  2 ERROR(S)
